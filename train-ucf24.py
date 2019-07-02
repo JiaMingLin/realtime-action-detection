@@ -94,7 +94,7 @@ def main():
     if not os.path.isdir(args.save_root):
         os.makedirs(args.save_root)
 
-    net = build_ssd(300, args.num_classes)
+    net = build_ssd(size = 300, num_classes = args.num_classes)
 
     if args.cuda:
         net = net.cuda()
