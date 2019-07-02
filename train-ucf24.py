@@ -81,7 +81,7 @@ def main():
     args.num_classes = num_classes
     args.stepvalues = [int(val) for val in args.stepvalues.split(',')]
     args.loss_reset_step = 30
-    args.eval_step = 10000
+    args.eval_step = 300
     args.print_step = 10
 
     ## Define the experiment Name will used to same directory and ENV for visdom
@@ -232,8 +232,8 @@ def train(args, net, optimizer, criterion, scheduler):
             loss.backward()
             optimizer.step()
             scheduler.step()
-            loc_loss = loss_l.data[0]
-            conf_loss = loss_c.data[0]
+            loc_loss = loss_l.item()
+            conf_loss = loss_c.item()
             # print('Loss data type ',type(loc_loss))
             loc_losses.update(loc_loss)
             cls_losses.update(conf_loss)
