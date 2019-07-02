@@ -20,7 +20,7 @@ from torch.autograd import Variable
 import torch.utils.data as data
 from data import v2, UCF24Detection, AnnotationTransform, detection_collate, CLASSES, BaseTransform
 from utils.augmentations import SSDAugmentation
-from layers.modules import MultiBoxLoss
+from layers.modules import MultiBoxLoss2
 from ssd2 import build_ssd
 import numpy as np
 import time
@@ -139,7 +139,7 @@ def main():
             params += [{'params':[param], 'lr': args.lr, 'weight_decay':args.weight_decay}]
 
     optimizer = optim.SGD(params, lr=args.lr, momentum=args.momentum, weight_decay=args.weight_decay)
-    criterion = MultiBoxLoss(args.num_classes, 0.5, True, 0, True, 3, 0.5, False, args.cuda)
+    criterion = MultiBoxLoss2(args.num_classes, 0.5, True, 0, True, 3, 0.5, False, args.cuda)
     scheduler = MultiStepLR(optimizer, milestones=args.stepvalues, gamma=args.gamma)
     train(args, net, optimizer, criterion, scheduler)
 
