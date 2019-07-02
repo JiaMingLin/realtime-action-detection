@@ -139,7 +139,7 @@ def main():
             params += [{'params':[param], 'lr': args.lr, 'weight_decay':args.weight_decay}]
 
     optimizer = optim.SGD(params, lr=args.lr, momentum=args.momentum, weight_decay=args.weight_decay)
-    criterion = MultiBoxLoss2(args.num_classes, 0.5, True, 0, True, 3, 0.5, False, args.cuda)
+    criterion = MultiBoxLoss(args.num_classes, 0.5, True, 0, True, 3, 0.5, False, args.cuda)
     scheduler = MultiStepLR(optimizer, milestones=args.stepvalues, gamma=args.gamma)
     train(args, net, optimizer, criterion, scheduler)
 
