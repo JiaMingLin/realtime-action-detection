@@ -21,7 +21,7 @@ import torch.utils.data as data
 from data import v2, UCF24Detection, AnnotationTransform, detection_collate, CLASSES, BaseTransform
 from utils.augmentations import SSDAugmentation
 from layers.modules import MultiBoxLoss
-from ssd import build_ssd
+from ssd2 import build_ssd
 import numpy as np
 import time
 from utils.evaluation import evaluate_detections
