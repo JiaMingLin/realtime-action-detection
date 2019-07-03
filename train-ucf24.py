@@ -366,7 +366,7 @@ def validate(args, net, val_data_loader, val_dataset, iteration_num, iou_thresh=
                 c_mask = scores.gt(args.conf_thresh)  # greater than minmum threshold
                 scores = scores[c_mask].squeeze()
                 # print('scores size',scores.size())
-                if scores.dim() == 0:
+                if scores.size(0) == 0:
                     # print(len(''), ' dim ==0 ')
                     det_boxes[cl_ind - 1].append(np.asarray([]))
                     continue
